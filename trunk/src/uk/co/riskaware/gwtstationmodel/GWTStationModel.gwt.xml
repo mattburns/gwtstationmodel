@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<module rename-to="gwtstationmodel">
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name="com.google.gwt.user.User"/>
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+  <inherits name="com.google.gwt.user.theme.standard.Standard"/>
+  <!-- <inherits name="com.google.gwt.user.theme.chrome.Chrome"/> -->
+  <!-- <inherits name="com.google.gwt.user.theme.dark.Dark"/>     -->
+  <!-- Other module inherits                                      -->
+  <inherits name="com.google.gwt.visualization.Visualization"/>
+  <inherits name='com.google.gwt.widgetideas.GWTCanvas'/>
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class="uk.co.riskaware.gwtstationmodel.client.GWTStationModelEntryPoint"/> 
+  <!-- The "xs" linker (cross site linker) generates javascript output that
+       can be included in web pages even if they are on a different domain.
+       This is necessary if this GWT visualization is intended to be a module
+       for other web applications.                                -->
+  <add-linker name="xs" />                                   
+  
+</module>
