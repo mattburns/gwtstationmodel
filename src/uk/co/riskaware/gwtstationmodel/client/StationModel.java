@@ -9,6 +9,7 @@ public class StationModel extends GWTCanvas {
     private static final Color DEFAULT_BARB_COLOR = new Color("#1446AA");
     private static final double SHAFT_TO_IMAGE_WIDTH_RATIO = 2.3;
     private static final int MAX_KNOTS = 190;
+    private static final int MAX_LENGTH = 100000;
     private final int shaftLength;
     private final int tickLength;
     private final int tickSpacing;
@@ -34,7 +35,7 @@ public class StationModel extends GWTCanvas {
         super((int) (shaftLength * SHAFT_TO_IMAGE_WIDTH_RATIO),
                 (int) (shaftLength * SHAFT_TO_IMAGE_WIDTH_RATIO));
 
-        this.shaftLength = shaftLength;
+        this.shaftLength = Math.min(MAX_LENGTH, shaftLength);
 
         tickLength = shaftLength / 4;
         tickSpacing = tickLength / 2;
@@ -44,7 +45,11 @@ public class StationModel extends GWTCanvas {
         yCenter = height / 2;
         centerRadius = shaftLength / 20;
 
-        setLineWidth(3);
+        if (shaftLength > 50) {
+            setLineWidth(3);
+        } else {
+            setLineWidth(1);
+        }
         setStrokeStyle(barbColor);
         setFillStyle(barbColor);
         setLineJoin(GWTCanvas.ROUND);
