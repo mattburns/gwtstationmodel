@@ -1,0 +1,68 @@
+<html>
+  <head>
+  <title>GWTStationModel</title>
+  <script language="javascript" src="http://www.google.com/jsapi"></script>
+  <script language="javascript" src="gwtstationmodel/gwtstationmodel.nocache.js"></script>
+  <style type="text/css">
+    body {
+      font-family: sans-serif;
+    }
+    h3, .formlabel {
+      margin-left:10px;
+    }
+    .formlabel {
+      width:100px;
+      float:left;
+    }
+    </style>
+  </head>
+  
+  <body>
+    <h3>GWTStationModel</h3>
+    
+    <form action="">
+    <div class="formlabel">Knots:</div>
+    <input id="knots" type="text" onkeyup="drawVisualization()" name="knots" value="15"/><br />
+    <div class="formlabel">Degrees:</div>
+    <input id="degrees" type="text" onkeyup="drawVisualization()" name="degrees" value="90"/><br />
+    <div class="formlabel">Color:</div>
+    <input id="color" type="text" onkeyup="drawVisualization()" name="color" value="#1446AA"/><br />
+    <div class="formlabel">Size:</div>
+    <input id="size" type="text" onkeyup="drawVisualization()" name="size" value="100"/><br />
+    </form>
+
+    <div id="mydiv"></div>
+    
+    <script type="text/javascript">
+      // Two modules to load (Google Visualization API and the GWTStationModel)
+      var num_modules = 2;
+      var stationModel;
+      
+      // This function will be called after each module was loaded.
+      function onLoadCallback() {
+          // Render the visualization if this was the last module.
+        if (--num_modules == 0) { 
+            stationModel = new GWTStationModel(document.getElementById('mydiv'));
+            drawVisualization();   
+        }
+      }
+        
+      function drawVisualization() {
+        var data = new google.visualization.DataTable();
+        
+        data.addColumn('number', 'knots');
+        data.addColumn('number', 'degrees');
+        data.addRows(1);
+        data.setCell(0, 0, parseFloat(document.getElementById('knots').value));
+        data.setCell(0, 1, parseFloat(document.getElementById('degrees').value));
+
+        stationModel.draw(data, {shaftLength: parseInt(document.getElementById('size').value),
+                          barbColor: document.getElementById('color').value});
+
+      }
+
+      google.load("visualization", "1");
+      google.setOnLoadCallback(onLoadCallback);
+    </script>
+  </body>
+</html>
