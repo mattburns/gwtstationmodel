@@ -6,13 +6,16 @@
   <style type="text/css">
     body {
       font-family: sans-serif;
+      font-size: smaller;
     }
-    h3, .formlabel {
-      margin-left:10px;
+    h3 {
+      margin-top:1em;
+      margin-left:1em;
     }
     .formlabel {
       width:100px;
       float:left;
+      margin-left:1em;
     }
     </style>
   </head>
@@ -40,7 +43,7 @@
       
       // This function will be called after each module was loaded.
       function onLoadCallback() {
-          // Render the visualization if this was the last module.
+        // Render the visualization if this was the last module.
         if (--num_modules == 0) { 
             stationModel = new GWTStationModel(document.getElementById('mydiv'));
             drawVisualization();   
@@ -49,15 +52,19 @@
         
       function drawVisualization() {
         var data = new google.visualization.DataTable();
+
+        var knots = parseFloat(document.getElementById('knots').value);
+        var degrees = parseFloat(document.getElementById('degrees').value);
+        var size = parseInt(document.getElementById('size').value);
+        var color = document.getElementById('color').value;
         
         data.addColumn('number', 'knots');
         data.addColumn('number', 'degrees');
         data.addRows(1);
-        data.setCell(0, 0, parseFloat(document.getElementById('knots').value));
-        data.setCell(0, 1, parseFloat(document.getElementById('degrees').value));
+        data.setCell(0, 0, knots);
+        data.setCell(0, 1, degrees);
 
-        stationModel.draw(data, {shaftLength: parseInt(document.getElementById('size').value),
-                          barbColor: document.getElementById('color').value});
+        stationModel.draw(data, {shaftLength: size, barbColor: color});
 
       }
 
