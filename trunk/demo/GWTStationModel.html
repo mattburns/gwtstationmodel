@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
   <title>GWTStationModel</title>
@@ -9,28 +8,28 @@
       font-family: sans-serif;
     }
     h3, .formlabel {
-	  margin-left:10px;
+      margin-left:10px;
     }
-	.formlabel {
-	  width:100px;
-	  float:left;
-	}
-	</style>
+    .formlabel {
+      width:100px;
+      float:left;
+    }
+    </style>
   </head>
   
   <body>
     <h3>GWTStationModel</h3>
     
     <form action="">
-	<div class="formlabel">Knots:</div>
-	<input id="knots" type="text" onkeyup="drawVisualization()" name="knots" value="15"/><br />
-	<div class="formlabel">Degrees:</div>
-	<input id="degrees" type="text" onkeyup="drawVisualization()" name="degrees" value="90"/><br />
-	<div class="formlabel">Color:</div>
-	<input id="color" type="text" onkeyup="drawVisualization()" name="color" value="#1446AA"/><br />
+    <div class="formlabel">Knots:</div>
+    <input id="knots" type="text" onkeyup="drawVisualization()" name="knots" value="15"/><br />
+    <div class="formlabel">Degrees:</div>
+    <input id="degrees" type="text" onkeyup="drawVisualization()" name="degrees" value="90"/><br />
+    <div class="formlabel">Color:</div>
+    <input id="color" type="text" onkeyup="drawVisualization()" name="color" value="#1446AA"/><br />
     <div class="formlabel">Size:</div>
     <input id="size" type="text" onkeyup="drawVisualization()" name="size" value="100"/><br />
-	</form>
+    </form>
 
     <div id="mydiv"></div>
     
@@ -41,10 +40,10 @@
       
       // This function will be called after each module was loaded.
       function onLoadCallback() {
-    	  // Render the visualization if this was the last module.
+          // Render the visualization if this was the last module.
         if (--num_modules == 0) { 
-        	stationModel = new GWTStationModel(document.getElementById('mydiv'));
-        	drawVisualization();   
+            stationModel = new GWTStationModel(document.getElementById('mydiv'));
+            drawVisualization();   
         }
       }
         
