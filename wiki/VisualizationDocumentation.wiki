@@ -62,10 +62,7 @@ List your methods here. Be sure to describe the parameters and results of each. 
 ||draw(data, options)||None||Details about the draw() method.||
 ||getSelection()||Array of selection elements||Standard getSelection() implementation. Is a selection a row? Column? Cell? Can you multi-select?||
 ||setSelection(selection)||None||Standard setSelection() implementation. Is a selection a row? Column? Cell? Can you multi-select?||
-||yourmethod(param1, param2)||String||Description of your method.
-param1 - String value that specifies the name of the elephant to display on the image.
-
-param2 [optional]- Numeric value that specifies the weight of the elephant, in pounds. Range is from 200 - 4000, inclusive. This number will determine the size of the elephant displayed. Default value is 1800.||
+||yourmethod(param1, param2)||String||Description of your method. param1 - String value that specifies the name of the elephant to display on the image. param2 [optional]- Numeric value that specifies the weight of the elephant, in pounds. Range is from 200 - 4000, inclusive. This number will determine the size of the elephant displayed. Default value is 1800.||
 
 ==Events==
 
