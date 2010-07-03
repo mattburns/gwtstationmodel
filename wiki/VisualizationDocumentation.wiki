@@ -1,0 +1,87 @@
+=TEMPLATE ONLY - NOT YET FINISHED!=
+
+=GWTStation Model=
+
+By: Matt Burns @ RiskAware
+Homepage: www.riskaware.co.uk
+
+==Overview==
+
+Insert a brief description of what your visualization looks like and some of its behavior here. For example.: A 3dmap is three-dimensional, manipulable map of a country with spheres assigned to specific regions. Spheres vary in size and color to indicate the value. The map is rendered in the browser using an embedded Flash player.
+
+==Example==
+
+Describe your example in a sentence or two. Add an embedded working example, plus the HTML for a full-page example, so that people can cut and paste a hosted example.
+
+{{{
+<html>
+<head>
+  <script type='text/javascript' src='your.url.here'></script>
+  <script type='text/javascript' src='//www.google.com/jsapi'></script>
+  <script type='text/javascript'>
+
+... Your code here ...
+  
+  </script>
+</head>
+
+<body>
+    <div id='example_canvas'></div>
+</body>
+
+</html>
+}}}
+
+==Loading and Instantiating==
+
+Load this visualization from http://xxx.com as shown here:
+{{{
+ <script style='text/javascript' src='http://your.url.here'></script>
+}}}
+The visualization class name is your.visualization.class.name. Here is an example of instantiating it in JavaScript:
+{{{
+  var visualization = new your.visualization.class(container_div);
+}}}
+
+==Data Format==
+
+Describe the format of data in the DataTable. Explain the meaning of the columns, the rows, and the format of each column.
+
+==Configuration Options==
+
+The following options can be added to the options object passed to the visualization's draw() method.
+
+||Name||Type||Default||Description||
+||option_name||type||default value||Full description of what this option does. Describe edge cases, what other options need to be set for this to work, what it conflicts with, etc.||
+
+==Methods==
+
+List your methods here. Be sure to describe the parameters and results of each. If you can include examples, even better! If a parameters is optional, mention that, and describe the default. Describe the full range of values each parameter can take.
+
+||Method||Return Type||Description||
+||draw(data, options)||None||Details about the draw() method.||
+||getSelection()||Array of selection elements||Standard getSelection() implementation. Is a selection a row? Column? Cell? Can you multi-select?||
+||setSelection(selection)||None||Standard setSelection() implementation. Is a selection a row? Column? Cell? Can you multi-select?||
+||yourmethod(param1, param2)||String||Description of your method.
+param1 - String value that specifies the name of the elephant to display on the image.
+
+param2 [optional]- Numeric value that specifies the weight of the elephant, in pounds. Range is from 200 - 4000, inclusive. This number will determine the size of the elephant displayed. Default value is 1800.||
+
+==Events==
+
+List the events exposed by your visualization. Be sure to describe what values are passed into your event handler, and how to use these values. If you can include examples, even better!
+
+||Name||Description||Properties||
+||select||Standard select event. Returns something||None||
+
+==Data Policy==
+
+Detail your data policy and explain how you handle customer data. For example: 'All code and data are processed and rendered in the browser. No data is sent to any server.'
+
+==Localization==
+
+This visualization does not support localization.
+
+==Notes==
+
+Add any additional information here about known issues, use cases, etc.
