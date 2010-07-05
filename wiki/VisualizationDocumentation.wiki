@@ -129,13 +129,13 @@ For the generated image, the speed in knots is rounded to the nearest 5 degrees.
 
 The following options can be added to the options object passed to the visualization's draw() method.
 
-||Name||Type||Default||Description||
+||*Name*||*Type*||*Default*||*Description*||
 ||shaftLength||int||100||This is the length, in pixels, of the wind barb shaft.||
 ||barbColor||String||"black"||This will be used to determine the color of the wind barb. Any valid CSS color string will do.||
 
 ==Methods==
 
-||Method||Return Type||Description||
+||*Method*||*Return Type*||*Description*||
 ||draw(data, options)||None||This will render the image. The format for the data and options objects are described above.||
 
 ==Events==
