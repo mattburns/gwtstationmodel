@@ -1,79 +1,152 @@
-=TEMPLATE ONLY - NOT YET FINISHED!=
+=GWTStationModel=
 
-=GWTStation Model=
+By: Matt Burns
 
-By: Matt Burns @ RiskAware
 Homepage: www.riskaware.co.uk
 
 ==Overview==
 
-Insert a brief description of what your visualization looks like and some of its behavior here. For example.: A 3dmap is three-dimensional, manipulable map of a country with spheres assigned to specific regions. Spheres vary in size and color to indicate the value. The map is rendered in the browser using an embedded Flash player.
+GWTStationModel is a GWT UI widget for dynamically drawing [http://en.wikipedia.org/wiki/Station_model weather station models].
+
+Although designed to be used as a GWT widget, the GWTStationModel is also wrapped as a [http://code.google.com/apis/visualization/documentation/ Google Chart] (aka Visualization API). This API allows you to add the GWTStationModel to any webpage (no GWT needed) with some simple javascript.
 
 ==Example==
 
-Describe your example in a sentence or two. Add an embedded working example, plus the HTML for a full-page example, so that people can cut and paste a hosted example.
+The [http://gwtstationmodel.googlecode.com/svn/trunk/demo/GWTStationModel.html live demo] is an example of consuming the GWTStationModel as a Google Chart.
+
+It demonstrates the dynamic construction and modification of a station model.
+
+
 
 {{{
 <html>
-<head>
-  <script type='text/javascript' src='your.url.here'></script>
-  <script type='text/javascript' src='//www.google.com/jsapi'></script>
-  <script type='text/javascript'>
-
-... Your code here ...
+  <head>
+  <title>GWTStationModel</title>
+  <script language="javascript" src="http://www.google.com/jsapi"></script>
+  <script language="javascript" src="http://gwtstationmodel.googlecode.com/svn/trunk/demo/gwtstationmodel/gwtstationmodel.nocache.js"></script>
+  <style type="text/css">
+    body {
+      font-family: sans-serif;
+      font-size: smaller;
+    }
+    h3 {
+      margin-top:1em;
+      margin-left:1em;
+    }
+    .formlabel {
+      width:10em;
+      float:left;
+      margin-left:1em;
+    }
+    </style>
+  </head>
   
-  </script>
-</head>
+  <body>
+    <h3>GWTStationModel</h3>
+    
+    <form action="">
+    <div class="formlabel">Knots:</div>
+    <input id="knots" type="text" onkeyup="drawVisualization()" name="knots" value="75"/><br />
+    <div class="formlabel">Degrees:</div>
+    <input id="degrees" type="text" onkeyup="drawVisualization()" name="degrees" value="45"/><br />
+    <div class="formlabel">Color:</div>
+    <input id="color" type="text" onkeyup="drawVisualization()" name="color" value="#336699"/><br />
+    <div class="formlabel">Size:</div>
+    <input id="size" type="text" onkeyup="drawVisualization()" name="size" value="100"/><br />
+    </form>
 
-<body>
-    <div id='example_canvas'></div>
-</body>
+    <div id="mydiv"></div>
+    
+    <script type="text/javascript">
+      // Two modules to load (Google Visualization API and the GWTStationModel)
+      var num_modules = 2;
+      var stationModel;
+      
+      // This function will be called after each module was loaded.
+      function onLoadCallback() {
+        // Render the visualization if this was the last module.
+        if (--num_modules == 0) { 
+            stationModel = new StationModelVisualization(document.getElementById('mydiv'));
+            drawVisualization();   
+        }
+      }
+        
+      function drawVisualization() {
+        var data = new google.visualization.DataTable();
 
+        var knots = parseFloat(document.getElementById('knots').value);
+        var degrees = parseFloat(document.getElementById('degrees').value);
+        var size = parseInt(document.getElementById('size').value);
+        var color = document.getElementById('color').value;
+        
+        data.addColumn('number', 'knots');
+        data.addColumn('number', 'degrees');
+        data.addRows(1);
+        data.setCell(0, 0, knots);
+        data.setCell(0, 1, degrees);
+
+        stationModel.draw(data, {shaftLength: size, barbColor: color});
+
+      }
+
+      google.load("visualization", "1");
+      google.setOnLoadCallback(onLoadCallback);
+    </script>
+  </body>
 </html>
 }}}
 
 ==Loading and Instantiating==
 
-Load this visualization from http://xxx.com as shown here:
+The latest visualization javascript can be loaded directly from http://gwtstationmodel.googlecode.com/svn/trunk/demo/gwtstationmodel/gwtstationmodel.nocache.js as shown here:
 {{{
- <script style='text/javascript' src='http://your.url.here'></script>
+ <script style='text/javascript' src='http://gwtstationmodel.googlecode.com/svn/trunk/demo/gwtstationmodel/gwtstationmodel.nocache.js'></script>
 }}}
-The visualization class name is your.visualization.class.name. Here is an example of instantiating it in JavaScript:
+The visualization class name is StationModelVisualization. Here is an example of instantiating it in JavaScript:
 {{{
-  var visualization = new your.visualization.class(container_div);
+  var visualization = new StationModelVisualization(container_div);
 }}}
 
 ==Data Format==
 
-Describe the format of data in the DataTable. Explain the meaning of the columns, the rows, and the format of each column.
+The only data that needs to be passed into the visualization is the speed in knots and the direction in degrees. Both should be non-negative floats. Since the visualization API expects data to be passed in through a DataTable, these values are simply passed in a table containing 1 row with 2 columns. Column 0 is knots, and column 1 is degrees.
+
+{{{
+        var data = new google.visualization.DataTable();
+
+        var knots = 5;
+        var degrees = 45;
+        
+        data.addColumn('number', 'knots');
+        data.addColumn('number', 'degrees');
+        data.addRows(1);
+        data.setCell(0, 0, knots);
+        data.setCell(0, 1, degrees);
+}}}
+
+For the generated image, the speed in knots is rounded to the nearest 5 degrees. Eg, 2.5  and 7.49 will be treated as 5 knots whereas 7.5 will be treated as 10 knots.
 
 ==Configuration Options==
 
 The following options can be added to the options object passed to the visualization's draw() method.
 
 ||Name||Type||Default||Description||
-||option_name||type||default value||Full description of what this option does. Describe edge cases, what other options need to be set for this to work, what it conflicts with, etc.||
+black
+||shaftLength||int||100||This is the length, in pixels, of the wind barb shaft.||
+||shaftLength||String||"black"||This will be used to determine the color of the wind barb. Any valid CSS color string will do.||
 
 ==Methods==
 
-List your methods here. Be sure to describe the parameters and results of each. If you can include examples, even better! If a parameters is optional, mention that, and describe the default. Describe the full range of values each parameter can take.
-
 ||Method||Return Type||Description||
-||draw(data, options)||None||Details about the draw() method.||
-||getSelection()||Array of selection elements||Standard getSelection() implementation. Is a selection a row? Column? Cell? Can you multi-select?||
-||setSelection(selection)||None||Standard setSelection() implementation. Is a selection a row? Column? Cell? Can you multi-select?||
-||yourmethod(param1, param2)||String||Description of your method. param1 - String value that specifies the name of the elephant to display on the image. param2 [optional]- Numeric value that specifies the weight of the elephant, in pounds. Range is from 200 - 4000, inclusive. This number will determine the size of the elephant displayed. Default value is 1800.||
+||draw(data, options)||None||This will render the image. The format for the data and options objects are described above.||
 
 ==Events==
 
-List the events exposed by your visualization. Be sure to describe what values are passed into your event handler, and how to use these values. If you can include examples, even better!
-
-||Name||Description||Properties||
-||select||Standard select event. Returns something||None||
+No events are published by this visualization.
 
 ==Data Policy==
 
-Detail your data policy and explain how you handle customer data. For example: 'All code and data are processed and rendered in the browser. No data is sent to any server.'
+All code and data are processed and rendered in the browser. No data is sent to any server.
 
 ==Localization==
 
@@ -81,4 +154,4 @@ This visualization does not support localization.
 
 ==Notes==
 
-Add any additional information here about known issues, use cases, etc.
+Feedback is always welcome.
