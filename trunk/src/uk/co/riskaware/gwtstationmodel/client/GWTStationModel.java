@@ -71,9 +71,9 @@ public class GWTStationModel extends GWTCanvas {
         lineTo(xCenter, endMarker);
 
         boolean atEnd = true;
-        while (knots >= 5) {
+        while (knots >= 2.5) {
 
-            if (knots >= 50) {
+            if (knots >= 47.5) {
                 stroke();
                 beginPath();
                 moveTo(xCenter, endMarker);
@@ -82,7 +82,7 @@ public class GWTStationModel extends GWTCanvas {
                 closePath();
                 fill();
                 knots -= 50;
-            } else if (knots >= 10) {
+            } else if (knots >= 7.5) {
                 if (atEnd) {
                     endMarker -= tickSpacing;
                 }
