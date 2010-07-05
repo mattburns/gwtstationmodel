@@ -9,7 +9,7 @@ import com.google.gwt.visualization.client.AbstractVisualization.VisualizationFa
  * The EntryPoint implementation for the GWT application.
  * 
  */
-class GWTStationModelEntryPoint implements EntryPoint {
+class StationModelEntryPoint implements EntryPoint {
 
     private static native void callOnLoadCallback(String name) /*-{
         if ($wnd.onLoadCallback != undefined) {
@@ -17,16 +17,16 @@ class GWTStationModelEntryPoint implements EntryPoint {
         }
     }-*/;
 
-    public GWTStationModelEntryPoint() {
+    public StationModelEntryPoint() {
     }
 
     public void onModuleLoad() {
 
         // Register the visualization
-        AbstractVisualization.registerVisualization("GWTStationModel",
-                new VisualizationFactory() {
+        AbstractVisualization.registerVisualization(
+                "StationModelVisualization", new VisualizationFactory() {
                     public AbstractVisualization<?> create() {
-                        return new GWTStationModel();
+                        return new StationModelVisualization();
                     }
                 });
 
