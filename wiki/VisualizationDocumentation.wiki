@@ -13,11 +13,9 @@ Although designed to be used as a GWT widget, the GWTStationModel is also wrappe
 
 ==Example==
 
-The [http://gwtstationmodel.googlecode.com/svn/trunk/demo/GWTStationModel.html live demo] is an example of consuming the GWTStationModel as a Google Chart.
+The [http://gwtstationmodel.googlecode.com/svn/trunk/demo/GWTStationModel.html live demo] is an example of consuming the GWTStationModel as a Google Chart. It demonstrates the dynamic construction and modification of a station model.
 
-It demonstrates the dynamic construction and modification of a station model.
-
-
+Here is the full source to help you get started:
 
 {{{
 <html>
@@ -153,6 +151,7 @@ All code and data are processed and rendered in the browser. No data is sent to 
 This visualization does not support localization.
 
 ==Notes==
+
 For more information, see the Google [http://code.google.com/apis/visualization/documentation/using_overview.html documentation].
 
 Feedback is always welcome.
