@@ -101,14 +101,14 @@ The latest visualization javascript can be loaded directly from http://gwtstatio
 {{{
  <script style='text/javascript' src='http://gwtstationmodel.googlecode.com/svn/trunk/demo/gwtstationmodel/gwtstationmodel.nocache.js'></script>
 }}}
-The visualization class name is StationModelVisualization. Here is an example of instantiating it in JavaScript:
+The visualization class name is !StationModelVisualization. Here is an example of instantiating it in !JavaScript:
 {{{
   var visualization = new StationModelVisualization(container_div);
 }}}
 
 ==Data Format==
 
-The only data that needs to be passed into the visualization is the speed in knots and the direction in degrees. Both should be non-negative floats. Since the visualization API expects data to be passed in through a DataTable, these values are simply passed in a table containing 1 row with 2 columns. Column 0 is knots, and column 1 is degrees.
+The only data that needs to be passed into the visualization is the speed in knots and the direction in degrees. Both should be non-negative floats. Since the visualization API expects data to be passed in through a !DataTable, these values are simply passed in a table containing 1 row with 2 columns. Column 0 is knots, and column 1 is degrees.
 
 {{{
         var data = new google.visualization.DataTable();
