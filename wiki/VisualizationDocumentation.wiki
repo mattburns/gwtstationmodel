@@ -153,5 +153,6 @@ All code and data are processed and rendered in the browser. No data is sent to 
 This visualization does not support localization.
 
 ==Notes==
+For more information, see the Google [http://code.google.com/apis/visualization/documentation/using_overview.html documentation].
 
 Feedback is always welcome.
