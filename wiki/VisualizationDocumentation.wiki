@@ -5,6 +5,8 @@ By: Matt Burns
 
 Homepage: [http://www.riskaware.co.uk www.riskaware.co.uk]
 
+<wiki:toc max_depth="1" />
+
 ==Overview==
 
 GWTStationModel is a GWT UI widget for dynamically drawing [http://en.wikipedia.org/wiki/Station_model weather station models].
