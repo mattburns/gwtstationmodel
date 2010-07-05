@@ -12,7 +12,7 @@
   <inherits name="com.google.gwt.visualization.Visualization"/>
   <inherits name='com.google.gwt.widgetideas.GWTCanvas'/>
   <!-- Specify the app entry point class.                         -->
-  <entry-point class="uk.co.riskaware.gwtstationmodel.client.GWTStationModelEntryPoint"/> 
+  <entry-point class="uk.co.riskaware.gwtstationmodel.client.StationModelEntryPoint"/> 
   <!-- The "xs" linker (cross site linker) generates javascript output that
        can be included in web pages even if they are on a different domain.
        This is necessary if this GWT visualization is intended to be a module

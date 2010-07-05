@@ -4,8 +4,9 @@
 	<!-- Arguments to gwtc and devmode targets -->
 	<property name="gwt.args" value="" />
 
-	<property name="sample.root" value="gwtstationmodel" />
-	<property name="sample.module" value="GWTStationModel" />
+	<property name="root" value="gwtstationmodel" />
+	<property name="module" value="GWTStationModel" />
+	<property name="visualization" value="StationModelVisualization" />
 
 	<path id="project.class.path">
 		<pathelement location="war/WEB-INF/classes" />
@@ -20,7 +21,7 @@
 	<target name="build" depends="javac,gwtc" description="Build this project" />
 
 	<target name="clean" description="Cleans this project's intermediate and output files">
-		<delete dir="war/${sample.root}" />
+		<delete dir="war/${root}" />
 		<delete dir="war/WEB-INF/classes" />
 		<delete dir="jar" />
 	</target>
@@ -45,7 +46,7 @@
 			<jvmarg value="-Xmx512M" />
 			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
 			<arg line="${gwt.args}" />
-			<arg value="uk.co.riskaware.${sample.root}.${sample.module}" />
+			<arg value="uk.co.riskaware.${root}.${module}" />
 		</java>
 	</target>
 
@@ -58,13 +59,13 @@
 			<jvmarg value="-Xmx512M" />
 			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
 			<arg line="${gwt.args}" />
-			<arg value="uk.co.riskaware.${sample.root}.${sample.module}" />
+			<arg value="uk.co.riskaware.${root}.${module}" />
 		</java>
 	</target>
 
 
 	<target name="war" depends="build" description="Create a war file">
-		<zip destfile="${sample.root}.war">
+		<zip destfile="${root}.war">
 			<zipfileset dir="war" />
 			<zipfileset dir="war/WEB-INF/lib" includes="gwt-servlet.jar" prefix="WEB-INF/lib" />
 		</zip>
@@ -81,7 +82,7 @@
 	</target>
 
 	<target name="jar" depends="compile" description="Create a jar file">
-		<jar destfile="${sample.root}.jar" basedir="jar" />
+		<jar destfile="${root}.jar" basedir="jar" />
 	</target>
 
 	<target name="demo" depends="war" description="Update the demo files">
