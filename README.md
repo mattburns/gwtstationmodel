@@ -11,9 +11,9 @@ GWTStationModel is an extension of [http://code.google.com/p/google-web-toolkit-
 Download the latest [http://gwtstationmodel.googlecode.com/svn/trunk/gwtstationmodel.jar gwtstationmodel.jar] and add it to your GWT project.
 
 You'll need to add the following line to your GWT module XML:
-{{{
+```
 <inherits name='uk.co.riskaware.gwtstationmodel.GWTStationModel' />
-}}}
+```
 
 See also [http://code.google.com/p/gwt-google-apis/wiki/VisualizationGettingStarted GWT Visualizations] and the [http://code.google.com/p/google-web-toolkit-incubator/ GWT Incubator].
 
